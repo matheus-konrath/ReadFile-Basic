@@ -11,13 +11,10 @@ public class Program {
 		
 		String path = ("C:\\Users\\matheus.konrath\\eclipse-workspace\\aulao002\\in.txt");
 		
-		FileReader fr = null;
-		BufferedReader br = null;
 		
-		try {
-			fr = new FileReader(path);
-			br = new BufferedReader(fr);
-			
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+				
 			String line = br.readLine(); // read line
 			while (line != null) {
 				System.out.println(line);
@@ -28,16 +25,6 @@ public class Program {
 			System.out.println("Error" + e.getMessage());
 		}
 		
-		finally{
-			try {
-			br.close();
-			fr.close(); 
-			}
-		
-		catch(IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 	}
 
